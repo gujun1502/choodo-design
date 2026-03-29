@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHOODO DESIGN - 专业室内设计咨询</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans SC', system-ui, sans-serif; font-size: 12px; line-height: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-synthesis: none; }
+    .page { display: flex; flex-direction: column; width: 100%; max-width: 1440px; margin: 0 auto; background: #fff; }
+
+    /* Nav */
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 80px; border-bottom: 1px solid #e8e8e8; }
+    .nav-brand { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: #1a1a2e; letter-spacing: 1px; }
+    .nav-links { display: flex; align-items: center; gap: 40px; }
+    .nav-links a { font-size: 14px; color: #555; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #1a1a2e; font-weight: 600; }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-phone { font-size: 13px; color: #555; }
+    .btn-gold { display: inline-block; padding: 10px 28px; background: #c4a35a; border-radius: 4px; font-size: 13px; color: #1a1a2e; font-weight: 600; text-decoration: none; cursor: pointer; transition: opacity 0.2s; }
+    .btn-gold:hover { opacity: 0.9; }
+
+    /* Hero */
+    .hero { display: flex; width: 100%; height: 560px; overflow: hidden; }
+    .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 80px; width: 55%; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+    .hero-tag { font-size: 14px; color: #c4a35a; letter-spacing: 4px; font-weight: 500; padding-bottom: 20px; }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: 46px; color: #fff; font-weight: 700; line-height: 1.25; padding-bottom: 12px; }
+    .hero-subtitle { font-size: 18px; color: rgba(255,255,255,0.75); line-height: 1.6; padding-bottom: 16px; }
+    .hero-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.8; padding-bottom: 40px; }
+    .hero-btns { display: flex; gap: 16px; }
+    .btn-outline { display: inline-block; padding: 14px 36px; border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; font-size: 14px; color: #fff; font-weight: 500; text-decoration: none; cursor: pointer; transition: border-color 0.2s; }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.6); }
+    .btn-hero { padding: 14px 36px; background: #c4a35a; border-radius: 4px; font-size: 14px; color: #1a1a2e; font-weight: 600; text-decoration: none; cursor: pointer; }
+    .hero-image { width: 45%; }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Stats */
+    .stats { display: flex; align-items: center; justify-content: center; gap: 80px; padding: 48px 80px; background: #c4a35a; }
+    .stat-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: #1a1a2e; }
+    .stat-label { font-size: 13px; color: #1a1a2e; opacity: 0.7; }
+    .stat-divider { width: 1px; height: 48px; background: rgba(26,26,46,0.2); }
+
+    /* Section Title */
+    .section-header { display: flex; flex-direction: column; align-items: center; padding: 72px 80px 48px; }
+    .section-tag { font-size: 13px; color: #c4a35a; letter-spacing: 4px; font-weight: 500; padding-bottom: 16px; }
+    .section-title { font-size: 36px; color: #1a1a2e; font-weight: 700; padding-bottom: 12px; }
+    .section-desc { font-size: 15px; color: #888; line-height: 1.6; text-align: center; max-width: 600px; }
+
+    /* Service Block */
+    .service { display: flex; align-items: center; gap: 48px; padding: 0 80px 64px; }
+    .service.reverse { flex-direction: row-reverse; }
+    .service-img { width: 55%; height: 400px; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
+    .service-img img { width: 100%; height: 100%; object-fit: cover; }
+    .service-content { width: 45%; display: flex; flex-direction: column; gap: 20px; }
+    .service-badge { display: flex; align-items: center; gap: 12px; }
+    .service-num { width: 40px; height: 40px; background: #1a1a2e; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-size: 18px; color: #c4a35a; font-weight: 700; }
+    .service-en { font-size: 13px; color: #c4a35a; letter-spacing: 3px; font-weight: 500; }
+    .service-name { font-size: 30px; color: #1a1a2e; font-weight: 700; line-height: 1.3; }
+    .service-text { font-size: 14px; color: #666; line-height: 1.9; }
+    .service-list { display: flex; flex-direction: column; gap: 12px; padding-top: 8px; }
+    .service-list-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #444; }
+    .service-list-item::before { content: ''; width: 6px; height: 6px; background: #c4a35a; border-radius: 50%; flex-shrink: 0; }
+    .btn-detail { align-self: flex-start; margin-top: 8px; padding: 12px 28px; background: #c4a35a; border-radius: 4px; font-size: 13px; color: #1a1a2e; font-weight: 600; text-decoration: none; cursor: pointer; transition: opacity 0.2s; }
+    .btn-detail:hover { opacity: 0.9; }
+
+    /* Why Us */
+    .why-section { background: #f7f6f3; }
+    .why-header { display: flex; flex-direction: column; align-items: center; padding: 72px 80px 48px; }
+    .why-cards { display: flex; gap: 24px; padding: 0 80px 72px; }
+    .why-card { flex: 1; background: #fff; border-radius: 8px; padding: 36px 28px; display: flex; flex-direction: column; gap: 16px; }
+    .why-icon { width: 48px; height: 48px; background: #1a1a2e; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-size: 20px; color: #c4a35a; font-weight: 700; }
+    .why-card h3 { font-size: 18px; color: #1a1a2e; font-weight: 700; }
+    .why-card p { font-size: 13px; color: #777; line-height: 1.8; }
+
+    /* CTA */
+    .cta { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 80px; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+    .cta-title { font-size: 32px; color: #fff; font-weight: 700; text-align: center; }
+    .cta-desc { font-size: 15px; color: rgba(255,255,255,0.6); text-align: center; line-height: 1.6; max-width: 520px; }
+    .cta-btns { display: flex; gap: 16px; padding-top: 8px; }
+    .btn-cta { padding: 14px 40px; background: #c4a35a; border-radius: 4px; font-size: 14px; color: #1a1a2e; font-weight: 600; text-decoration: none; cursor: pointer; }
+    .btn-cta-outline { padding: 14px 40px; border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; font-size: 14px; color: #fff; font-weight: 500; text-decoration: none; cursor: pointer; }
+
+    /* Footer */
+    .footer { display: flex; gap: 60px; padding: 64px 80px 40px; background: #111122; }
+    .footer-brand { width: 30%; display: flex; flex-direction: column; gap: 16px; }
+    .footer-brand h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #fff; }
+    .footer-brand p { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.8; }
+    .footer-col { display: flex; flex-direction: column; gap: 14px; width: 17%; }
+    .footer-col.wide { width: 30%; }
+    .footer-col h4 { font-size: 13px; color: #c4a35a; font-weight: 600; padding-bottom: 4px; }
+    .footer-col a, .footer-col span { font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer-col a:hover { color: rgba(255,255,255,0.8); }
+    .copyright { display: flex; align-items: center; justify-content: space-between; padding: 20px 80px; background: #0a0a18; border-top: 1px solid rgba(255,255,255,0.05); }
+    .copyright span { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .copyright-links { display: flex; gap: 24px; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .hero { flex-direction: column; height: auto; }
+      .hero-text { width: 100%; padding: 48px 24px; }
+      .hero-title { font-size: 32px; }
+      .hero-image { width: 100%; height: 280px; }
+      .stats { flex-wrap: wrap; gap: 32px; padding: 32px 24px; }
+      .stat-divider { display: none; }
+      .service, .service.reverse { flex-direction: column; padding: 0 24px 48px; }
+      .service-img, .service-content { width: 100%; }
+      .why-cards { flex-direction: column; padding: 0 24px 48px; }
+      .footer { flex-direction: column; gap: 32px; padding: 40px 24px; }
+      .footer-brand, .footer-col, .footer-col.wide { width: 100%; }
+      .copyright { flex-direction: column; gap: 12px; padding: 16px 24px; }
+      .section-header, .why-header { padding: 48px 24px 32px; }
+      .cta { padding: 48px 24px; }
+      .cta-title { font-size: 24px; }
+      .cta-btns { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-brand">CHOODO DESIGN</div>
+      <div class="nav-links">
+        <a href="#" class="active">首页</a>
+        <a href="#services">服务领域</a>
+        <a href="#cases">案例展示</a>
+        <a href="#team">设计团队</a>
+        <a href="#about">关于我们</a>
+      </div>
+      <div class="nav-right">
+        <span class="nav-phone">400-888-6600</span>
+        <a href="#contact" class="btn-gold">免费咨询</a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-text">
+        <div class="hero-tag">专业室内设计咨询服务</div>
+        <h1 class="hero-title">空间重塑，价值再造</h1>
+        <p class="hero-subtitle">从金融办公到精品民宿，我们为每一个空间注入专业洞察与美学价值。</p>
+        <p class="hero-desc">拥有 15 年行业经验，服务超过 200+ 企业客户，覆盖金融、科技、文旅等多个领域。我们的设计团队深谙空间与商业的关系，致力于打造兼具功能性与艺术性的室内空间。</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-hero">预约咨询</a>
+          <a href="#cases" class="btn-outline">查看案例</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="现代办公空间">
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="stat-item">
+        <span class="stat-num">15+</span>
+        <span class="stat-label">年行业经验</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">200+</span>
+        <span class="stat-label">企业客户</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">50万+</span>
+        <span class="stat-label">㎡ 设计面积</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">98%</span>
+        <span class="stat-label">客户满意度</span>
+      </div>
+    </section>
+
+    <!-- Services Header -->
+    <div class="section-header" id="services">
+      <span class="section-tag">OUR SERVICES</span>
+      <h2 class="section-title">三大核心咨询方向</h2>
+      <p class="section-desc">深耕金融办公、通用办公与精品民宿三大领域，以专业视角为您的空间赋予独特价值</p>
+    </div>
+
+    <!-- Service 1: Financial Office -->
+    <section class="service">
+      <div class="service-img">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="金融办公">
+      </div>
+      <div class="service-content">
+        <div class="service-badge">
+          <div class="service-num">01</div>
+          <span class="service-en">FINANCIAL OFFICE</span>
+        </div>
+        <h3 class="service-name">金融办公空间设计</h3>
+        <p class="service-text">为银行、证券、基金、保险等金融机构提供专业的办公空间设计咨询。我们深谙金融行业对安全性、私密性与品牌形象的严格要求，打造兼具专业感与舒适度的高端办公环境。</p>
+        <div class="service-list">
+          <div class="service-list-item">VIP 客户接待区与私密洽谈室规划</div>
+          <div class="service-list-item">品牌形象与空间体验一体化设计</div>
+          <div class="service-list-item">合规安防与智能化系统集成</div>
+          <div class="service-list-item">高管办公与交易大厅专项设计</div>
+        </div>
+        <a href="#" class="btn-detail">了解详情 →</a>
+      </div>
+    </section>
+
+    <!-- Service 2: General Office -->
+    <section class="service reverse">
+      <div class="service-img">
+        <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?w=800&q=80" alt="通用办公">
+      </div>
+      <div class="service-content">
+        <div class="service-badge">
+          <div class="service-num">02</div>
+          <span class="service-en">GENERAL OFFICE</span>
+        </div>
+        <h3 class="service-name">通用办公空间设计</h3>
+        <p class="service-text">面向科技公司、创意机构、联合办公等多元业态，提供灵活高效的办公空间解决方案。注重员工体验与协作效率，创造激发创新与归属感的工作场所。</p>
+        <div class="service-list">
+          <div class="service-list-item">开放式与混合办公模式空间规划</div>
+          <div class="service-list-item">员工休闲区与企业文化空间打造</div>
+          <div class="service-list-item">声学优化与绿色节能设计</div>
+          <div class="service-list-item">多功能会议与路演空间定制</div>
+        </div>
+        <a href="#" class="btn-detail">了解详情 →</a>
+      </div>
+    </section>
+
+    <!-- Service 3: Boutique Homestay -->
+    <section class="service">
+      <div class="service-img">
+        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80" alt="精品民宿">
+      </div>
+      <div class="service-content">
+        <div class="service-badge">
+          <div class="service-num">03</div>
+          <span class="service-en">BOUTIQUE HOMESTAY</span>
+        </div>
+        <h3 class="service-name">精品民宿空间设计</h3>
+        <p class="service-text">为精品民宿、度假酒店与文旅地产提供沉浸式空间设计。将在地文化与自然元素融入设计语言，为旅客创造难忘的居住体验，助力品牌差异化竞争。</p>
+        <div class="service-list">
+          <div class="service-list-item">在地文化与自然景观融合设计</div>
+          <div class="service-list-item">客房体验动线与情感化空间营造</div>
+          <div class="service-list-item">公共空间与餐饮区氛围设计</div>
+          <div class="service-list-item">运营效率导向的后勤空间优化</div>
+        </div>
+        <a href="#" class="btn-detail">了解详情 →</a>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-section">
+      <div class="why-header">
+        <span class="section-tag">WHY CHOOSE US</span>
+        <h2 class="section-title">为什么选择我们</h2>
+        <p class="section-desc" style="max-width:500px;padding-bottom:48px;">专业能力与服务品质，是我们赢得客户信赖的基础</p>
+      </div>
+      <div class="why-cards">
+        <div class="why-card">
+          <div class="why-icon">D</div>
+          <h3>深度行业洞察</h3>
+          <p>深耕金融、办公、文旅三大领域，精准理解行业需求与合规要求，提供贴合业务本质的设计方案。</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">T</div>
+          <h3>全流程服务</h3>
+          <p>从前期调研、概念设计到施工落地与软装配饰，提供一站式全流程设计咨询与项目管理服务。</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">Q</div>
+          <h3>品质把控体系</h3>
+          <p>严格的设计评审与施工验收标准，确保每个项目从图纸到实景都保持高水准的设计品质。</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">V</div>
+          <h3>价值驱动设计</h3>
+          <p>不止于美学表达，更关注空间对商业价值的提升——提高坪效、强化品牌、优化体验。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="contact">
+      <h2 class="cta-title">让我们为您的空间注入新的可能</h2>
+      <p class="cta-desc">无论是金融办公的高端定制、通用办公的效率升级，还是民宿空间的体验革新，我们都期待与您深入对话。</p>
+      <div class="cta-btns">
+        <a href="#" class="btn-cta">立即预约咨询</a>
+        <a href="#" class="btn-cta-outline">下载服务手册</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="about">
+      <div class="footer-brand">
+        <h2>CHOODO DESIGN</h2>
+        <p>专注建筑室内设计咨询，为金融办公、通用办公与精品民宿提供专业空间解决方案。以设计驱动商业价值。</p>
+      </div>
+      <div class="footer-col">
+        <h4>服务领域</h4>
+        <a href="#">金融办公设计</a>
+        <a href="#">通用办公设计</a>
+        <a href="#">精品民宿设计</a>
+        <a href="#">软装配饰服务</a>
+      </div>
+      <div class="footer-col">
+        <h4>关于我们</h4>
+        <a href="#">公司介绍</a>
+        <a href="#">设计团队</a>
+        <a href="#">合作伙伴</a>
+        <a href="#">加入我们</a>
+      </div>
+      <div class="footer-col wide">
+        <h4>联系方式</h4>
+        <span>电话：400-888-6600</span>
+        <span>邮箱：hello@choodo.design</span>
+        <span>地址：上海市黄浦区外滩金融中心 S2 栋 18F</span>
+      </div>
+    </footer>
+    <div class="copyright">
+      <span>&copy; 2026 CHOODO DESIGN. All rights reserved.</span>
+      <div class="copyright-links">
+        <span>隐私政策</span>
+        <span>服务条款</span>
+        <span>沪ICP备2026XXXXXX号</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
